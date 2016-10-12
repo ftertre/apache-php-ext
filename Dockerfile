@@ -1,5 +1,6 @@
 FROM php:5.6-apache
 RUN apt-get update && apt-get install -y \
+    locales \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libmcrypt-dev \
@@ -10,4 +11,5 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install -j$(nproc) gd \
   && docker-php-ext-install -j$(nproc) pdo_mysql \
 	&& docker-php-ext-install -j$(nproc) pdo_pgsql \
+	&& docker-php-ext-install -j$(nproc) gettext \
 	&& cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
